@@ -23,7 +23,7 @@ def format_time(dataset=None, time_column_name="day", old_format="%Y/%m/%d %H:%M
         dataset = pd.read_csv(dataset)
 
     if old_format == "timestamp":
-        time_format = [time.gmtime(t) for t in dataset[time_column_name]]
+        time_format = [time.localtime(t) for t in dataset[time_column_name]]
     else:
         time_format = [time.strptime(t,  old_format) for t in dataset[time_column_name]]
 
